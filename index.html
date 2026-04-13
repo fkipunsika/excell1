@@ -140,374 +140,363 @@
       'q_case5':['=10%*K4', '=0.1*K4', '=K4*10%', '=K4*0.1', '10%*K4', '0.1*K4']
     };
 
-    // === PETUNJUK DAN JAWABAN EXTRA ===
-    var quizExtras = {
-      'q_left':  { hint: 'Gunakan fungsi =LEFT(sel, jumlah_karakter). Selnya adalah A2, jumlahnya 1.', answer: '=LEFT(A2,1)' },
-      'q_mid':   { hint: 'Gunakan fungsi =MID(sel, posisi_awal, jumlah_karakter). Mulai posisi ke-2, sebanyak 3.', answer: '=MID(B2,2,3)' },
-      'q_right': { hint: 'Gunakan fungsi =RIGHT(sel, jumlah_karakter). Selnya C2, jumlahnya 4.', answer: '=RIGHT(C2,4)' },
-      'q_if':    { hint: 'Gunakan =IF(kondisi, "Jika Benar", "Jika Salah"). Kondisinya adalah D2>75.', answer: '=IF(D2>75,"Lulus","Gagal")' },
-      'q_and':   { hint: 'Gunakan =AND(syarat1, syarat2). Ingat, gunakan tanda kutip ganda ("") untuk membandingkan teks.', answer: '=AND(E2="Pria",F2="Aktif")' },
-      'q_case1': { hint: 'Gabungkan IF dan LEFT: =IF(LEFT(C4, 1)="E", "Elektronik", "Pakaian").', answer: '=IF(LEFT(C4,1)="E","Elektronik","Pakaian")' },
-      'q_case2': { hint: 'Gabungkan IF dan MID: =IF(MID(C4, 2, 1)="1", "Baru", "Bekas").', answer: '=IF(MID(C4,2,1)="1","Baru","Bekas")' },
-      'q_case3': { hint: 'Cukup gunakan =RIGHT(sel, jumlah) untuk mengambil 1 karakter terakhir dari sel C4.', answer: '=RIGHT(C4,1)' },
-      'q_case4': { hint: 'Gunakan fungsi =AND(syarat1, syarat2). Bandingkan sel E4 dengan "Elektronik" dan sel F4 dengan "Baru".', answer: '=AND(E4="Elektronik",F4="Baru")' },
-      'q_case5': { hint: 'Untuk menghitung diskon, gunakan operasi perkalian dengan simbol bintang (*).', answer: '=10%*K4' }
-    };
-
+   // === PETUNJUK DAN JAWABAN EXTRA ===
+    var quizExtras = {
+      'q_left':  { hint: 'Gunakan fungsi =LEFT(sel, jumlah_karakter). Selnya adalah A2, jumlahnya 1.' },
+      'q_mid':   { hint: 'Gunakan fungsi =MID(sel, posisi_awal, jumlah_karakter). Mulai posisi ke-2, sebanyak 3.' },
+      'q_right': { hint: 'Gunakan fungsi =RIGHT(sel, jumlah_karakter). Selnya C2, jumlahnya 4.' },
+      'q_if':    { hint: 'Gunakan =IF(kondisi, "Jika Benar", "Jika Salah"). Kondisinya adalah D2>75.' },
+      'q_and':   { hint: 'Gunakan =AND(syarat1, syarat2). Ingat, gunakan tanda kutip ganda ("") untuk membandingkan teks.' },
+      'q_case1': { hint: 'Gabungkan IF dan LEFT: =IF(LEFT(C4, 1)="E", "Elektronik", "Pakaian").' },
+      'q_case2': { hint: 'Gabungkan IF dan MID: =IF(MID(C4, 2, 1)="1", "Baru", "Bekas").' },
+      'q_case3': { hint: 'Cukup gunakan =RIGHT(sel, jumlah) untuk mengambil 1 karakter terakhir dari sel C4.' },
+      'q_case4': { hint: 'Gunakan fungsi =AND(syarat1, syarat2). Bandingkan sel E4 dengan "Elektronik" dan sel F4 dengan "Baru".' },
+      'q_case5': { hint: 'Untuk menghitung diskon, gunakan operasi perkalian dengan simbol bintang (*).' }
+    };
     // === KONTEN HALAMAN (DISIMPAN DI MEMORI UNTUK PERPINDAHAN CEPAT) ===
-    var pageContents = {
-      'intro': 
-        '<div class="card border-0 shadow-sm mb-4 rounded-4 overflow-hidden">' +
-          '<div class="bg-success text-white p-4">' +
-            '<h3 class="fw-bold mb-1"><i class="fa-solid fa-door-open me-2"></i> Selamat Datang!</h3>' +
-            '<p class="mb-0 opacity-75">Modul Pembelajaran Mandiri Excel</p>' +
-          '</div>' +
-          '<div class="card-body p-4">' +
-            '<p class="fs-5">Aplikasi ini dirancang untuk membantu Anda memahami fungsi-fungsi dasar Excel yang sering digunakan di dunia kerja, khususnya untuk <strong>pengolahan data inventori barang</strong>.</p>' +
-            '<div class="alert alert-warning border-0 shadow-sm rounded-3 mt-4 mb-4">' +
-              '<h6 class="fw-bold text-dark"><i class="fa-solid fa-circle-exclamation me-2"></i> Aturan Penulisan Rumus di Aplikasi Ini:</h6>' +
-              '<ul class="mb-0 text-dark">' +
-                '<li class="mb-1">Setiap rumus <strong>WAJIB</strong> diawali dengan tanda sama dengan (<code>=</code>).</li>' +
-                '<li class="mb-1">Teks atau huruf di dalam rumus harus diapit tanda kutip ganda (contoh: <code>"Baru"</code>).</li>' +
-                '<li>Pemisah argumen bisa berupa koma (<code>,</code>) atau titik koma (<code>;</code>). Sistem latihan ini otomatis mengenali keduanya.</li>' +
-              '</ul>' +
-            '</div>' +
-            '<p class="text-muted">Silakan pilih materi <strong>Fungsi Teks</strong> di menu samping untuk mulai belajar!</p>' +
-            '<button class="btn btn-success mt-2" onclick="window.showPage(\'string\', document.getElementById(\'nav-string\'))">Mulai Belajar <i class="fa-solid fa-arrow-right ms-1"></i></button>' +
-          '</div>' +
-        '</div>',
+    var pageContents = {
+      'intro': 
+        '<div class="card border-0 shadow-sm mb-4 rounded-4 overflow-hidden">' +
+          '<div class="bg-success text-white p-4">' +
+            '<h3 class="fw-bold mb-1"><i class="fa-solid fa-door-open me-2"></i> Selamat Datang!</h3>' +
+            '<p class="mb-0 opacity-75">Modul Pembelajaran Mandiri Excel</p>' +
+          '</div>' +
+          '<div class="card-body p-4">' +
+            '<p class="fs-5">Aplikasi ini dirancang untuk membantu Anda memahami fungsi-fungsi dasar Excel yang sering digunakan di dunia kerja, khususnya untuk <strong>pengolahan data inventori barang</strong>.</p>' +
+            '<div class="alert alert-warning border-0 shadow-sm rounded-3 mt-4 mb-4">' +
+              '<h6 class="fw-bold text-dark"><i class="fa-solid fa-circle-exclamation me-2"></i> Aturan Penulisan Rumus di Aplikasi Ini:</h6>' +
+              '<ul class="mb-0 text-dark">' +
+                '<li class="mb-1">Setiap rumus <strong>WAJIB</strong> diawali dengan tanda sama dengan (<code>=</code>).</li>' +
+                '<li class="mb-1">Teks atau huruf di dalam rumus harus diapit tanda kutip ganda (contoh: <code>"Baru"</code>).</li>' +
+                '<li>Pemisah argumen bisa berupa koma (<code>,</code>) atau titik koma (<code>;</code>). Sistem latihan ini otomatis mengenali keduanya.</li>' +
+              '</ul>' +
+            '</div>' +
+            '<p class="text-muted">Silakan pilih materi <strong>Fungsi Teks</strong> di menu samping untuk mulai belajar!</p>' +
+            '<button class="btn btn-success mt-2" onclick="window.showPage(\'string\', document.getElementById(\'nav-string\'))">Mulai Belajar <i class="fa-solid fa-arrow-right ms-1"></i></button>' +
+          '</div>' +
+        '</div>',
 
-      'string': 
-        '<div class="card border-0 shadow-sm mb-4 rounded-4">' +
-          '<div class="card-body p-4">' +
-            '<h3 class="fw-bold text-success mb-2"><i class="fa-solid fa-scissors me-2"></i> Fungsi Teks (String)</h3>' +
-            '<p class="text-muted mb-4">Fungsi ini digunakan untuk memotong atau mengambil bagian tertentu dari sebuah teks/kode.</p>' +
-            
-            '<div class="p-3 bg-light rounded-3 mb-4">' +
-              '<h5 class="fw-bold text-dark"><span class="badge bg-success me-2">1</span> Fungsi LEFT</h5>' +
-              '<p>Mengambil beberapa karakter dari sisi <strong>Kiri</strong> (awal) teks.</p>' +
-              '<div class="formula-box mb-2">=LEFT(teks_sel, jumlah_karakter)</div>' +
-              '<p class="small text-muted mb-3"><i class="fa-solid fa-lightbulb text-warning"></i> Contoh: <code>=LEFT("JAKARTA", 3)</code> menghasilkan <strong>"JAK"</strong>.</p>' +
-              '<div class="card border-start border-4 border-warning shadow-sm">' +
-                '<div class="card-body p-3">' +
-                  '<label class="fw-bold small text-uppercase text-muted mb-2">Uji Pemahaman LEFT:</label>' +
-                  '<p class="mb-2 fw-medium">Buat rumus untuk mengambil <strong>1 karakter pertama</strong> dari sel <strong>A2</strong>.</p>' +
-                  '<div class="input-group input-group-sm mb-1">' +
-                    '<span class="input-group-text bg-excel">f(x)</span>' +
-                    '<input type="text" id="input_q_left" class="form-control" placeholder="Awali dengan =">' +
-                    '<button class="btn btn-warning fw-bold" onclick="window.checkQuiz(\'q_left\')">Cek</button>' +
-                  '</div>' +
-                  '<div class="d-flex gap-3 mt-1 mb-2">' +
-                    '<button class="btn btn-sm btn-link text-muted text-decoration-none p-0" onclick="window.showHint(\'q_left\')"><i class="fa-solid fa-circle-question text-warning"></i> Petunjuk</button>' +
-                    '<button class="btn btn-sm btn-link text-muted text-decoration-none p-0" onclick="window.showAnswer(\'q_left\')"><i class="fa-solid fa-key text-success"></i> Lihat Jawaban</button>' +
-                  '</div>' +
-                  '<div id="extra_q_left" class="mt-2 d-none"></div>' +
-                  '<div id="fb_q_left"></div>' +
-                '</div>' +
-              '</div>' +
-            '</div>' +
-            
-            '<div class="p-3 bg-light rounded-3 mb-4">' +
-              '<h5 class="fw-bold text-dark"><span class="badge bg-success me-2">2</span> Fungsi MID</h5>' +
-              '<p>Mengambil karakter dari posisi <strong>Tengah</strong> tertentu.</p>' +
-              '<div class="formula-box mb-2">=MID(teks_sel, posisi_awal, jumlah_karakter)</div>' +
-              '<p class="small text-muted mb-3"><i class="fa-solid fa-lightbulb text-warning"></i> Contoh: <code>=MID("SURABAYA", 3, 2)</code> menghasilkan <strong>"RA"</strong> (mulai dari urutan ke-3, ambil 2 huruf).</p>' +
-              '<div class="card border-start border-4 border-warning shadow-sm">' +
-                '<div class="card-body p-3">' +
-                  '<label class="fw-bold small text-uppercase text-muted mb-2">Uji Pemahaman MID:</label>' +
-                  '<p class="mb-2 fw-medium">Buat rumus mengambil <strong>3 karakter</strong> mulai dari <strong>urutan ke-2</strong> pada sel <strong>B2</strong>.</p>' +
-                  '<div class="input-group input-group-sm mb-1">' +
-                    '<span class="input-group-text bg-excel">f(x)</span>' +
-                    '<input type="text" id="input_q_mid" class="form-control" placeholder="Awali dengan =">' +
-                    '<button class="btn btn-warning fw-bold" onclick="window.checkQuiz(\'q_mid\')">Cek</button>' +
-                  '</div>' +
-                  '<div class="d-flex gap-3 mt-1 mb-2">' +
-                    '<button class="btn btn-sm btn-link text-muted text-decoration-none p-0" onclick="window.showHint(\'q_mid\')"><i class="fa-solid fa-circle-question text-warning"></i> Petunjuk</button>' +
-                    '<button class="btn btn-sm btn-link text-muted text-decoration-none p-0" onclick="window.showAnswer(\'q_mid\')"><i class="fa-solid fa-key text-success"></i> Lihat Jawaban</button>' +
-                  '</div>' +
-                  '<div id="extra_q_mid" class="mt-2 d-none"></div>' +
-                  '<div id="fb_q_mid"></div>' +
-                '</div>' +
-              '</div>' +
-            '</div>' +
-            
-            '<div class="p-3 bg-light rounded-3">' +
-              '<h5 class="fw-bold text-dark"><span class="badge bg-success me-2">3</span> Fungsi RIGHT</h5>' +
-              '<p>Mengambil beberapa karakter dari sisi <strong>Kanan</strong> (akhir) teks.</p>' +
-              '<div class="formula-box mb-2">=RIGHT(teks_sel, jumlah_karakter)</div>' +
-              '<p class="small text-muted mb-3"><i class="fa-solid fa-lightbulb text-warning"></i> Contoh: <code>=RIGHT("BANDUNG", 4)</code> menghasilkan <strong>"DUNG"</strong>.</p>' +
-              '<div class="card border-start border-4 border-warning shadow-sm">' +
-                '<div class="card-body p-3">' +
-                  '<label class="fw-bold small text-uppercase text-muted mb-2">Uji Pemahaman RIGHT:</label>' +
-                  '<p class="mb-2 fw-medium">Buat rumus untuk mengambil <strong>4 karakter terakhir</strong> dari sel <strong>C2</strong>.</p>' +
-                  '<div class="input-group input-group-sm mb-1">' +
-                    '<span class="input-group-text bg-excel">f(x)</span>' +
-                    '<input type="text" id="input_q_right" class="form-control" placeholder="Awali dengan =">' +
-                    '<button class="btn btn-warning fw-bold" onclick="window.checkQuiz(\'q_right\')">Cek</button>' +
-                  '</div>' +
-                  '<div class="d-flex gap-3 mt-1 mb-2">' +
-                    '<button class="btn btn-sm btn-link text-muted text-decoration-none p-0" onclick="window.showHint(\'q_right\')"><i class="fa-solid fa-circle-question text-warning"></i> Petunjuk</button>' +
-                    '<button class="btn btn-sm btn-link text-muted text-decoration-none p-0" onclick="window.showAnswer(\'q_right\')"><i class="fa-solid fa-key text-success"></i> Lihat Jawaban</button>' +
-                  '</div>' +
-                  '<div id="extra_q_right" class="mt-2 d-none"></div>' +
-                  '<div id="fb_q_right"></div>' +
-                '</div>' +
-              '</div>' +
-            '</div>' +
-            
-          '</div>' +
-        '</div>',
+      'string': 
+        '<div class="card border-0 shadow-sm mb-4 rounded-4">' +
+          '<div class="card-body p-4">' +
+            '<h3 class="fw-bold text-success mb-2"><i class="fa-solid fa-scissors me-2"></i> Fungsi Teks (String)</h3>' +
+            '<p class="text-muted mb-4">Fungsi ini digunakan untuk memotong atau mengambil bagian tertentu dari sebuah teks/kode.</p>' +
+            
+            '<div class="p-3 bg-light rounded-3 mb-4">' +
+              '<h5 class="fw-bold text-dark"><span class="badge bg-success me-2">1</span> Fungsi LEFT</h5>' +
+              '<p>Mengambil beberapa karakter dari sisi <strong>Kiri</strong> (awal) teks.</p>' +
+              '<div class="formula-box mb-2">=LEFT(teks_sel, jumlah_karakter)</div>' +
+              '<p class="small text-muted mb-3"><i class="fa-solid fa-lightbulb text-warning"></i> Contoh: <code>=LEFT("JAKARTA", 3)</code> menghasilkan <strong>"JAK"</strong>.</p>' +
+              '<div class="card border-start border-4 border-warning shadow-sm">' +
+                '<div class="card-body p-3">' +
+                  '<label class="fw-bold small text-uppercase text-muted mb-2">Uji Pemahaman LEFT:</label>' +
+                  '<p class="mb-2 fw-medium">Buat rumus untuk mengambil <strong>1 karakter pertama</strong> dari sel <strong>A2</strong>.</p>' +
+                  '<div class="input-group input-group-sm mb-1">' +
+                    '<span class="input-group-text bg-excel">f(x)</span>' +
+                    '<input type="text" id="input_q_left" class="form-control" placeholder="Awali dengan =">' +
+                    '<button class="btn btn-warning fw-bold" onclick="window.checkQuiz(\'q_left\')">Cek</button>' +
+                  '</div>' +
+                  '<div class="d-flex gap-3 mt-1 mb-2">' +
+                    '<button class="btn btn-sm btn-link text-muted text-decoration-none p-0" onclick="window.showHint(\'q_left\')"><i class="fa-solid fa-circle-question text-warning"></i> Petunjuk</button>' +
+                  '</div>' +
+                  '<div id="extra_q_left" class="mt-2 d-none"></div>' +
+                  '<div id="fb_q_left"></div>' +
+                '</div>' +
+              '</div>' +
+            '</div>' +
+            
+            '<div class="p-3 bg-light rounded-3 mb-4">' +
+              '<h5 class="fw-bold text-dark"><span class="badge bg-success me-2">2</span> Fungsi MID</h5>' +
+              '<p>Mengambil karakter dari posisi <strong>Tengah</strong> tertentu.</p>' +
+              '<div class="formula-box mb-2">=MID(teks_sel, posisi_awal, jumlah_karakter)</div>' +
+              '<p class="small text-muted mb-3"><i class="fa-solid fa-lightbulb text-warning"></i> Contoh: <code>=MID("SURABAYA", 3, 2)</code> menghasilkan <strong>"RA"</strong> (mulai dari urutan ke-3, ambil 2 huruf).</p>' +
+              '<div class="card border-start border-4 border-warning shadow-sm">' +
+                '<div class="card-body p-3">' +
+                  '<label class="fw-bold small text-uppercase text-muted mb-2">Uji Pemahaman MID:</label>' +
+                  '<p class="mb-2 fw-medium">Buat rumus mengambil <strong>3 karakter</strong> mulai dari <strong>urutan ke-2</strong> pada sel <strong>B2</strong>.</p>' +
+                  '<div class="input-group input-group-sm mb-1">' +
+                    '<span class="input-group-text bg-excel">f(x)</span>' +
+                    '<input type="text" id="input_q_mid" class="form-control" placeholder="Awali dengan =">' +
+                    '<button class="btn btn-warning fw-bold" onclick="window.checkQuiz(\'q_mid\')">Cek</button>' +
+                  '</div>' +
+                  '<div class="d-flex gap-3 mt-1 mb-2">' +
+                    '<button class="btn btn-sm btn-link text-muted text-decoration-none p-0" onclick="window.showHint(\'q_mid\')"><i class="fa-solid fa-circle-question text-warning"></i> Petunjuk</button>' +
+                  '</div>' +
+                  '<div id="extra_q_mid" class="mt-2 d-none"></div>' +
+                  '<div id="fb_q_mid"></div>' +
+                '</div>' +
+              '</div>' +
+            '</div>' +
+            
+            '<div class="p-3 bg-light rounded-3">' +
+              '<h5 class="fw-bold text-dark"><span class="badge bg-success me-2">3</span> Fungsi RIGHT</h5>' +
+              '<p>Mengambil beberapa karakter dari sisi <strong>Kanan</strong> (akhir) teks.</p>' +
+              '<div class="formula-box mb-2">=RIGHT(teks_sel, jumlah_karakter)</div>' +
+              '<p class="small text-muted mb-3"><i class="fa-solid fa-lightbulb text-warning"></i> Contoh: <code>=RIGHT("BANDUNG", 4)</code> menghasilkan <strong>"DUNG"</strong>.</p>' +
+              '<div class="card border-start border-4 border-warning shadow-sm">' +
+                '<div class="card-body p-3">' +
+                  '<label class="fw-bold small text-uppercase text-muted mb-2">Uji Pemahaman RIGHT:</label>' +
+                  '<p class="mb-2 fw-medium">Buat rumus untuk mengambil <strong>4 karakter terakhir</strong> dari sel <strong>C2</strong>.</p>' +
+                  '<div class="input-group input-group-sm mb-1">' +
+                    '<span class="input-group-text bg-excel">f(x)</span>' +
+                    '<input type="text" id="input_q_right" class="form-control" placeholder="Awali dengan =">' +
+                    '<button class="btn btn-warning fw-bold" onclick="window.checkQuiz(\'q_right\')">Cek</button>' +
+                  '</div>' +
+                  '<div class="d-flex gap-3 mt-1 mb-2">' +
+                    '<button class="btn btn-sm btn-link text-muted text-decoration-none p-0" onclick="window.showHint(\'q_right\')"><i class="fa-solid fa-circle-question text-warning"></i> Petunjuk</button>' +
+                  '</div>' +
+                  '<div id="extra_q_right" class="mt-2 d-none"></div>' +
+                  '<div id="fb_q_right"></div>' +
+                '</div>' +
+              '</div>' +
+            '</div>' +
+            
+          '</div>' +
+        '</div>',
 
-      'logic': 
-        '<div class="card border-0 shadow-sm mb-4 rounded-4">' +
-          '<div class="card-body p-4">' +
-            '<h3 class="fw-bold text-success mb-2"><i class="fa-solid fa-code-branch me-2"></i> Fungsi Logika (Kondisi)</h3>' +
-            '<p class="text-muted mb-4">Fungsi yang membuat Excel bisa "berpikir" dan mengambil keputusan berdasarkan kondisi tertentu.</p>' +
-            
-            '<div class="p-3 bg-light rounded-3 mb-4">' +
-              '<h5 class="fw-bold text-dark"><span class="badge bg-primary me-2">1</span> Fungsi IF</h5>' +
-              '<p>Mengevaluasi kondisi, menghasilkan Nilai A jika Benar, dan Nilai B jika Salah.</p>' +
-              '<div class="formula-box mb-2">=IF(kondisi_yg_dicek, "Hasil_Jika_Benar", "Hasil_Jika_Salah")</div>' +
-              '<p class="small text-muted mb-3"><i class="fa-solid fa-lightbulb text-warning"></i> Contoh: <code>=IF(A1>50, "Lulus", "Remedial")</code></p>' +
-              '<div class="card border-start border-4 border-primary shadow-sm">' +
-                '<div class="card-body p-3">' +
-                  '<label class="fw-bold small text-uppercase text-muted mb-2">Uji Pemahaman IF:</label>' +
-                  '<p class="mb-2 fw-medium">Jika sel <strong>D2</strong> lebih besar dari 75, maka <strong>"Lulus"</strong>, selain itu <strong>"Gagal"</strong>.</p>' +
-                  '<div class="input-group input-group-sm mb-1">' +
-                    '<span class="input-group-text bg-excel">f(x)</span>' +
-                    '<input type="text" id="input_q_if" class="form-control" placeholder="Awali dengan =">' +
-                    '<button class="btn btn-primary fw-bold" onclick="window.checkQuiz(\'q_if\')">Cek</button>' +
-                  '</div>' +
-                  '<div class="d-flex gap-3 mt-1 mb-2">' +
-                    '<button class="btn btn-sm btn-link text-muted text-decoration-none p-0" onclick="window.showHint(\'q_if\')"><i class="fa-solid fa-circle-question text-warning"></i> Petunjuk</button>' +
-                    '<button class="btn btn-sm btn-link text-muted text-decoration-none p-0" onclick="window.showAnswer(\'q_if\')"><i class="fa-solid fa-key text-success"></i> Lihat Jawaban</button>' +
-                  '</div>' +
-                  '<div id="extra_q_if" class="mt-2 d-none"></div>' +
-                  '<div id="fb_q_if"></div>' +
-                '</div>' +
-              '</div>' +
-            '</div>' +
-            
-            '<div class="p-3 bg-light rounded-3">' +
-              '<h5 class="fw-bold text-dark"><span class="badge bg-primary me-2">2</span> Fungsi AND</h5>' +
-              '<p>Menghasilkan Benar (TRUE) HANYA JIKA <strong>semua</strong> syarat terpenuhi. Biasanya digunakan di dalam IF.</p>' +
-              '<div class="formula-box mb-2">=AND(syarat_1, syarat_2, ...)</div>' +
-              '<p class="small text-muted mb-3"><i class="fa-solid fa-lightbulb text-warning"></i> Contoh: <code>=AND(A1="Pria", B1="Menikah")</code></p>' +
-              '<div class="card border-start border-4 border-primary shadow-sm">' +
-                '<div class="card-body p-3">' +
-                  '<label class="fw-bold small text-uppercase text-muted mb-2">Uji Pemahaman AND:</label>' +
-                  '<p class="mb-2 fw-medium">Buat kondisi AND: Sel <strong>E2</strong> sama dengan <strong>"Pria"</strong> dan sel <strong>F2</strong> sama dengan <strong>"Aktif"</strong>.</p>' +
-                  '<div class="input-group input-group-sm mb-1">' +
-                    '<span class="input-group-text bg-excel">f(x)</span>' +
-                    '<input type="text" id="input_q_and" class="form-control" placeholder="Awali dengan =">' +
-                    '<button class="btn btn-primary fw-bold" onclick="window.checkQuiz(\'q_and\')">Cek</button>' +
-                  '</div>' +
-                  '<div class="d-flex gap-3 mt-1 mb-2">' +
-                    '<button class="btn btn-sm btn-link text-muted text-decoration-none p-0" onclick="window.showHint(\'q_and\')"><i class="fa-solid fa-circle-question text-warning"></i> Petunjuk</button>' +
-                    '<button class="btn btn-sm btn-link text-muted text-decoration-none p-0" onclick="window.showAnswer(\'q_and\')"><i class="fa-solid fa-key text-success"></i> Lihat Jawaban</button>' +
-                  '</div>' +
-                  '<div id="extra_q_and" class="mt-2 d-none"></div>' +
-                  '<div id="fb_q_and"></div>' +
-                '</div>' +
-              '</div>' +
-            '</div>' +
+      'logic': 
+        '<div class="card border-0 shadow-sm mb-4 rounded-4">' +
+          '<div class="card-body p-4">' +
+            '<h3 class="fw-bold text-success mb-2"><i class="fa-solid fa-code-branch me-2"></i> Fungsi Logika (Kondisi)</h3>' +
+            '<p class="text-muted mb-4">Fungsi yang membuat Excel bisa "berpikir" dan mengambil keputusan berdasarkan kondisi tertentu.</p>' +
+            
+            '<div class="p-3 bg-light rounded-3 mb-4">' +
+              '<h5 class="fw-bold text-dark"><span class="badge bg-primary me-2">1</span> Fungsi IF</h5>' +
+              '<p>Mengevaluasi kondisi, menghasilkan Nilai A jika Benar, dan Nilai B jika Salah.</p>' +
+              '<div class="formula-box mb-2">=IF(kondisi_yg_dicek, "Hasil_Jika_Benar", "Hasil_Jika_Salah")</div>' +
+              '<p class="small text-muted mb-3"><i class="fa-solid fa-lightbulb text-warning"></i> Contoh: <code>=IF(A1>50, "Lulus", "Remedial")</code></p>' +
+              '<div class="card border-start border-4 border-primary shadow-sm">' +
+                '<div class="card-body p-3">' +
+                  '<label class="fw-bold small text-uppercase text-muted mb-2">Uji Pemahaman IF:</label>' +
+                  '<p class="mb-2 fw-medium">Jika sel <strong>D2</strong> lebih besar dari 75, maka <strong>"Lulus"</strong>, selain itu <strong>"Gagal"</strong>.</p>' +
+                  '<div class="input-group input-group-sm mb-1">' +
+                    '<span class="input-group-text bg-excel">f(x)</span>' +
+                    '<input type="text" id="input_q_if" class="form-control" placeholder="Awali dengan =">' +
+                    '<button class="btn btn-primary fw-bold" onclick="window.checkQuiz(\'q_if\')">Cek</button>' +
+                  '</div>' +
+                  '<div class="d-flex gap-3 mt-1 mb-2">' +
+                    '<button class="btn btn-sm btn-link text-muted text-decoration-none p-0" onclick="window.showHint(\'q_if\')"><i class="fa-solid fa-circle-question text-warning"></i> Petunjuk</button>' +
+                  '</div>' +
+                  '<div id="extra_q_if" class="mt-2 d-none"></div>' +
+                  '<div id="fb_q_if"></div>' +
+                '</div>' +
+              '</div>' +
+            '</div>' +
+            
+            '<div class="p-3 bg-light rounded-3">' +
+              '<h5 class="fw-bold text-dark"><span class="badge bg-primary me-2">2</span> Fungsi AND</h5>' +
+              '<p>Menghasilkan Benar (TRUE) HANYA JIKA <strong>semua</strong> syarat terpenuhi. Biasanya digunakan di dalam IF.</p>' +
+              '<div class="formula-box mb-2">=AND(syarat_1, syarat_2, ...)</div>' +
+              '<p class="small text-muted mb-3"><i class="fa-solid fa-lightbulb text-warning"></i> Contoh: <code>=AND(A1="Pria", B1="Menikah")</code></p>' +
+              '<div class="card border-start border-4 border-primary shadow-sm">' +
+                '<div class="card-body p-3">' +
+                  '<label class="fw-bold small text-uppercase text-muted mb-2">Uji Pemahaman AND:</label>' +
+                  '<p class="mb-2 fw-medium">Buat kondisi AND: Sel <strong>E2</strong> sama dengan <strong>"Pria"</strong> dan sel <strong>F2</strong> sama dengan <strong>"Aktif"</strong>.</p>' +
+                  '<div class="input-group input-group-sm mb-1">' +
+                    '<span class="input-group-text bg-excel">f(x)</span>' +
+                    '<input type="text" id="input_q_and" class="form-control" placeholder="Awali dengan =">' +
+                    '<button class="btn btn-primary fw-bold" onclick="window.checkQuiz(\'q_and\')">Cek</button>' +
+                  '</div>' +
+                  '<div class="d-flex gap-3 mt-1 mb-2">' +
+                    '<button class="btn btn-sm btn-link text-muted text-decoration-none p-0" onclick="window.showHint(\'q_and\')"><i class="fa-solid fa-circle-question text-warning"></i> Petunjuk</button>' +
+                  '</div>' +
+                  '<div id="extra_q_and" class="mt-2 d-none"></div>' +
+                  '<div id="fb_q_and"></div>' +
+                '</div>' +
+              '</div>' +
+            '</div>' +
 
-          '</div>' +
-        '</div>',
+          '</div>' +
+        '</div>',
 
-      'case': 
-        '<div class="card border-0 shadow-sm mb-4 rounded-4">' +
-          '<div class="card-body p-4">' +
-            '<h3 class="fw-bold text-danger mb-3"><i class="fa-solid fa-laptop-code me-2"></i> Latihan Kasus Inventori Toko</h3>' +
-            '<p>Berikut adalah tabel data barang di sebuah gudang e-commerce. Kolom "kode" mengandung 3 informasi penting yang harus Anda ekstrak menggunakan fungsi yang telah dipelajari.</p>' +
-            
-            '<div class="row g-3 mb-4">' +
-              '<div class="col-md-4">' +
-                '<div class="p-3 bg-light rounded-3 border border-danger border-opacity-25 text-center h-100">' +
-                  '<h6 class="fw-bold text-danger mb-2">Digit Ke-1 (Kiri)</h6>' +
-                  '<span class="badge bg-dark mb-1">Kategori</span><br>' +
-                  '<small><strong>E</strong> = Elektronik<br><strong>P</strong> = Pakaian</small>' +
-                '</div>' +
-              '</div>' +
-              '<div class="col-md-4">' +
-                '<div class="p-3 bg-light rounded-3 border border-danger border-opacity-25 text-center h-100">' +
-                  '<h6 class="fw-bold text-danger mb-2">Digit Ke-2 (Tengah)</h6>' +
-                  '<span class="badge bg-dark mb-1">Kondisi</span><br>' +
-                  '<small><strong>1</strong> = Baru<br><strong>2</strong> = Bekas</small>' +
-                '</div>' +
-              '</div>' +
-              '<div class="col-md-4">' +
-                '<div class="p-3 bg-light rounded-3 border border-danger border-opacity-25 text-center h-100">' +
-                  '<h6 class="fw-bold text-danger mb-2">Digit Ke-3 (Kanan)</h6>' +
-                  '<span class="badge bg-dark mb-1">Pengiriman</span><br>' +
-                  '<small><strong>R</strong> = Reguler<br><strong>X</strong> = Ekspres</small>' +
-                '</div>' +
-              '</div>' +
-            '</div>' +
+      'case': 
+        '<div class="card border-0 shadow-sm mb-4 rounded-4">' +
+          '<div class="card-body p-4">' +
+            '<h3 class="fw-bold text-danger mb-3"><i class="fa-solid fa-laptop-code me-2"></i> Latihan Kasus Inventori Toko</h3>' +
+            '<p>Berikut adalah tabel data barang di sebuah gudang e-commerce. Kolom "kode" mengandung 3 informasi penting yang harus Anda ekstrak menggunakan fungsi yang telah dipelajari.</p>' +
+            
+            '<div class="row g-3 mb-4">' +
+              '<div class="col-md-4">' +
+                '<div class="p-3 bg-light rounded-3 border border-danger border-opacity-25 text-center h-100">' +
+                  '<h6 class="fw-bold text-danger mb-2">Digit Ke-1 (Kiri)</h6>' +
+                  '<span class="badge bg-dark mb-1">Kategori</span><br>' +
+                  '<small><strong>E</strong> = Elektronik<br><strong>P</strong> = Pakaian</small>' +
+                '</div>' +
+              '</div>' +
+              '<div class="col-md-4">' +
+                '<div class="p-3 bg-light rounded-3 border border-danger border-opacity-25 text-center h-100">' +
+                  '<h6 class="fw-bold text-danger mb-2">Digit Ke-2 (Tengah)</h6>' +
+                  '<span class="badge bg-dark mb-1">Kondisi</span><br>' +
+                  '<small><strong>1</strong> = Baru<br><strong>2</strong> = Bekas</small>' +
+                '</div>' +
+              '</div>' +
+              '<div class="col-md-4">' +
+                '<div class="p-3 bg-light rounded-3 border border-danger border-opacity-25 text-center h-100">' +
+                  '<h6 class="fw-bold text-danger mb-2">Digit Ke-3 (Kanan)</h6>' +
+                  '<span class="badge bg-dark mb-1">Pengiriman</span><br>' +
+                  '<small><strong>R</strong> = Reguler<br><strong>X</strong> = Ekspres</small>' +
+                '</div>' +
+              '</div>' +
+            '</div>' +
 
-            '<div class="table-responsive mb-4 rounded-3 border">' +
-              '<table class="table table-sm excel-table mb-0 text-nowrap">' +
-                '<thead>' +
-                  '<tr>' +
-                    '<th style="width:40px; background:#e8f5e9; color:#333;"></th>' +
-                    '<th>C</th>' +
-                    '<th>E</th>' +
-                    '<th>F</th>' +
-                    '<th>G</th>' +
-                  '</tr>' +
-                '</thead>' +
-                '<tbody>' +
-                  '<tr class="bg-light fw-bold text-center">' +
-                    '<td style="background:#e8f5e9; color:#333;"></td>' +
-                    '<td>kode</td>' +
-                    '<td>Kategori</td>' +
-                    '<td>Kondisi</td>' +
-                    '<td>Pengiriman</td>' +
-                  '</tr>' +
-                  '<tr>' +
-                    '<td style="background:#e8f5e9; color:#333; text-align:center; font-weight:bold;">4</td>' +
-                    '<td class="text-center fw-bold text-primary">E1X</td>' +
-                    '<td><span class="text-muted small fst-italic">=if(left(C4,...))</span></td>' +
-                    '<td><span class="text-muted small fst-italic">=if(mid(C4,...))</span></td>' +
-                    '<td><span class="text-muted small fst-italic">=if(right(C4,...))</span></td>' +
-                  '</tr>' +
-                  '<tr>' +
-                    '<td style="background:#e8f5e9; color:#333; text-align:center; font-weight:bold;">5</td>' +
-                    '<td class="text-center fw-bold text-primary">P2R</td>' +
-                    '<td><span class="text-muted small">...</span></td>' +
-                    '<td><span class="text-muted small">...</span></td>' +
-                    '<td><span class="text-muted small">...</span></td>' +
-                  '</tr>' +
-                '</tbody>' +
-              '</table>' +
-            '</div>' +
+            '<div class="table-responsive mb-4 rounded-3 border">' +
+              '<table class="table table-sm excel-table mb-0 text-nowrap">' +
+                '<thead>' +
+                  '<tr>' +
+                    '<th style="width:40px; background:#e8f5e9; color:#333;"></th>' +
+                    '<th>C</th>' +
+                    '<th>E</th>' +
+                    '<th>F</th>' +
+                    '<th>G</th>' +
+                  '</tr>' +
+                '</thead>' +
+                '<tbody>' +
+                  '<tr class="bg-light fw-bold text-center">' +
+                    '<td style="background:#e8f5e9; color:#333;"></td>' +
+                    '<td>kode</td>' +
+                    '<td>Kategori</td>' +
+                    '<td>Kondisi</td>' +
+                    '<td>Pengiriman</td>' +
+                  '</tr>' +
+                  '<tr>' +
+                    '<td style="background:#e8f5e9; color:#333; text-align:center; font-weight:bold;">4</td>' +
+                    '<td class="text-center fw-bold text-primary">E1X</td>' +
+                    '<td><span class="text-muted small fst-italic">=if(left(C4,...))</span></td>' +
+                    '<td><span class="text-muted small fst-italic">=if(mid(C4,...))</span></td>' +
+                    '<td><span class="text-muted small fst-italic">=if(right(C4,...))</span></td>' +
+                  '</tr>' +
+                  '<tr>' +
+                    '<td style="background:#e8f5e9; color:#333; text-align:center; font-weight:bold;">5</td>' +
+                    '<td class="text-center fw-bold text-primary">P2R</td>' +
+                    '<td><span class="text-muted small">...</span></td>' +
+                    '<td><span class="text-muted small">...</span></td>' +
+                    '<td><span class="text-muted small">...</span></td>' +
+                  '</tr>' +
+                '</tbody>' +
+              '</table>' +
+            '</div>' +
 
-            '<!-- QUIZ ITEMS -->' +
-            '<div class="card mb-3 border-start border-4 border-primary shadow-sm">' +
-              '<div class="card-body">' +
-                '<h6 class="fw-bold text-primary"><i class="fa-solid fa-pen-to-square me-1"></i> Soal 1: Kategori (Kolom E)</h6>' +
-                '<p class="small mb-2">Tulis rumus IF dipadu LEFT pada sel <strong>E4</strong>. Jika huruf pertama dari C4 adalah "E", maka "Elektronik", selain itu "Pakaian".</p>' +
-                '<div class="input-group input-group-sm mb-1">' +
-                  '<span class="input-group-text bg-excel">f(x)</span>' +
-                  '<input type="text" id="input_q_case1" class="form-control" placeholder="Contoh: =IF(LEFT(C4,1)=...">' +
-                  '<button class="btn btn-outline-primary fw-bold" onclick="window.checkQuiz(\'q_case1\')">Cek Jawaban</button>' +
-                '</div>' +
-                '<div class="d-flex gap-3 mt-1 mb-2">' +
-                  '<button class="btn btn-sm btn-link text-muted text-decoration-none p-0" onclick="window.showHint(\'q_case1\')"><i class="fa-solid fa-circle-question text-warning"></i> Petunjuk</button>' +
-                  '<button class="btn btn-sm btn-link text-muted text-decoration-none p-0" onclick="window.showAnswer(\'q_case1\')"><i class="fa-solid fa-key text-success"></i> Lihat Jawaban</button>' +
-                '</div>' +
-                '<div id="extra_q_case1" class="mt-2 d-none"></div>' +
-                '<div id="fb_q_case1"></div>' +
-              '</div>' +
-            '</div>' +
+            '' +
+            '<div class="card mb-3 border-start border-4 border-primary shadow-sm">' +
+              '<div class="card-body">' +
+                '<h6 class="fw-bold text-primary"><i class="fa-solid fa-pen-to-square me-1"></i> Soal 1: Kategori (Kolom E)</h6>' +
+                '<p class="small mb-2">Tulis rumus IF dipadu LEFT pada sel <strong>E4</strong>. Jika huruf pertama dari C4 adalah "E", maka "Elektronik", selain itu "Pakaian".</p>' +
+                '<div class="input-group input-group-sm mb-1">' +
+                  '<span class="input-group-text bg-excel">f(x)</span>' +
+                  '<input type="text" id="input_q_case1" class="form-control" placeholder="Contoh: =IF(LEFT(C4,1)=...">' +
+                  '<button class="btn btn-outline-primary fw-bold" onclick="window.checkQuiz(\'q_case1\')">Cek Jawaban</button>' +
+                '</div>' +
+                '<div class="d-flex gap-3 mt-1 mb-2">' +
+                  '<button class="btn btn-sm btn-link text-muted text-decoration-none p-0" onclick="window.showHint(\'q_case1\')"><i class="fa-solid fa-circle-question text-warning"></i> Petunjuk</button>' +
+                '</div>' +
+                '<div id="extra_q_case1" class="mt-2 d-none"></div>' +
+                '<div id="fb_q_case1"></div>' +
+              '</div>' +
+            '</div>' +
 
-            '<div class="card mb-3 border-start border-4 border-primary shadow-sm">' +
-              '<div class="card-body">' +
-                '<h6 class="fw-bold text-primary"><i class="fa-solid fa-pen-to-square me-1"></i> Soal 2: Kondisi (Kolom F)</h6>' +
-                '<p class="small mb-2">Tulis rumus IF dipadu MID pada sel <strong>F4</strong>. Jika angka tengah (ke-2) dari C4 adalah "1", maka "Baru", selain itu "Bekas".</p>' +
-                '<div class="input-group input-group-sm mb-1">' +
-                  '<span class="input-group-text bg-excel">f(x)</span>' +
-                  '<input type="text" id="input_q_case2" class="form-control" placeholder="Contoh: =IF(MID(...)">' +
-                  '<button class="btn btn-outline-primary fw-bold" onclick="window.checkQuiz(\'q_case2\')">Cek Jawaban</button>' +
-                '</div>' +
-                '<div class="d-flex gap-3 mt-1 mb-2">' +
-                  '<button class="btn btn-sm btn-link text-muted text-decoration-none p-0" onclick="window.showHint(\'q_case2\')"><i class="fa-solid fa-circle-question text-warning"></i> Petunjuk</button>' +
-                  '<button class="btn btn-sm btn-link text-muted text-decoration-none p-0" onclick="window.showAnswer(\'q_case2\')"><i class="fa-solid fa-key text-success"></i> Lihat Jawaban</button>' +
-                '</div>' +
-                '<div id="extra_q_case2" class="mt-2 d-none"></div>' +
-                '<div id="fb_q_case2"></div>' +
-              '</div>' +
-            '</div>' +
+            '<div class="card mb-3 border-start border-4 border-primary shadow-sm">' +
+              '<div class="card-body">' +
+                '<h6 class="fw-bold text-primary"><i class="fa-solid fa-pen-to-square me-1"></i> Soal 2: Kondisi (Kolom F)</h6>' +
+                '<p class="small mb-2">Tulis rumus IF dipadu MID pada sel <strong>F4</strong>. Jika angka tengah (ke-2) dari C4 adalah "1", maka "Baru", selain itu "Bekas".</p>' +
+                '<div class="input-group input-group-sm mb-1">' +
+                  '<span class="input-group-text bg-excel">f(x)</span>' +
+                  '<input type="text" id="input_q_case2" class="form-control" placeholder="Contoh: =IF(MID(...)">' +
+                  '<button class="btn btn-outline-primary fw-bold" onclick="window.checkQuiz(\'q_case2\')">Cek Jawaban</button>' +
+                '</div>' +
+                '<div class="d-flex gap-3 mt-1 mb-2">' +
+                  '<button class="btn btn-sm btn-link text-muted text-decoration-none p-0" onclick="window.showHint(\'q_case2\')"><i class="fa-solid fa-circle-question text-warning"></i> Petunjuk</button>' +
+                '</div>' +
+                '<div id="extra_q_case2" class="mt-2 d-none"></div>' +
+                '<div id="fb_q_case2"></div>' +
+              '</div>' +
+            '</div>' +
 
-            '<div class="card mb-3 border-start border-4 border-primary shadow-sm">' +
-              '<div class="card-body">' +
-                '<h6 class="fw-bold text-primary"><i class="fa-solid fa-pen-to-square me-1"></i> Soal 3: Pengiriman (Kolom G)</h6>' +
-                '<p class="small mb-2">Kita butuh digit paling kanan untuk menentukan kode pengiriman. Tuliskan fungsi <strong>RIGHT</strong> untuk mengambil 1 karakter terakhir dari sel C4.</p>' +
-                '<div class="input-group input-group-sm mb-1">' +
-                  '<span class="input-group-text bg-excel">f(x)</span>' +
-                  '<input type="text" id="input_q_case3" class="form-control" placeholder="Contoh: =RIGHT(...)">' +
-                  '<button class="btn btn-outline-primary fw-bold" onclick="window.checkQuiz(\'q_case3\')">Cek Jawaban</button>' +
-                '</div>' +
-                '<div class="d-flex gap-3 mt-1 mb-2">' +
-                  '<button class="btn btn-sm btn-link text-muted text-decoration-none p-0" onclick="window.showHint(\'q_case3\')"><i class="fa-solid fa-circle-question text-warning"></i> Petunjuk</button>' +
-                  '<button class="btn btn-sm btn-link text-muted text-decoration-none p-0" onclick="window.showAnswer(\'q_case3\')"><i class="fa-solid fa-key text-success"></i> Lihat Jawaban</button>' +
-                '</div>' +
-                '<div id="extra_q_case3" class="mt-2 d-none"></div>' +
-                '<div id="fb_q_case3"></div>' +
-              '</div>' +
-            '</div>' +
+            '<div class="card mb-3 border-start border-4 border-primary shadow-sm">' +
+              '<div class="card-body">' +
+                '<h6 class="fw-bold text-primary"><i class="fa-solid fa-pen-to-square me-1"></i> Soal 3: Pengiriman (Kolom G)</h6>' +
+                '<p class="small mb-2">Kita butuh digit paling kanan untuk menentukan kode pengiriman. Tuliskan fungsi <strong>RIGHT</strong> untuk mengambil 1 karakter terakhir dari sel C4.</p>' +
+                '<div class="input-group input-group-sm mb-1">' +
+                  '<span class="input-group-text bg-excel">f(x)</span>' +
+                  '<input type="text" id="input_q_case3" class="form-control" placeholder="Contoh: =RIGHT(...)">' +
+                  '<button class="btn btn-outline-primary fw-bold" onclick="window.checkQuiz(\'q_case3\')">Cek Jawaban</button>' +
+                '</div>' +
+                '<div class="d-flex gap-3 mt-1 mb-2">' +
+                  '<button class="btn btn-sm btn-link text-muted text-decoration-none p-0" onclick="window.showHint(\'q_case3\')"><i class="fa-solid fa-circle-question text-warning"></i> Petunjuk</button>' +
+                '</div>' +
+                '<div id="extra_q_case3" class="mt-2 d-none"></div>' +
+                '<div id="fb_q_case3"></div>' +
+              '</div>' +
+            '</div>' +
 
-            '<div class="card mb-3 border-start border-4 border-primary shadow-sm">' +
-              '<div class="card-body">' +
-                '<h6 class="fw-bold text-primary"><i class="fa-solid fa-pen-to-square me-1"></i> Soal 4: Syarat Asuransi (Kolom I)</h6>' +
-                '<p class="small mb-2">Barang wajib diasuransikan JIKA: Kategori (<strong>E4</strong>) adalah "Elektronik" <strong>DAN</strong> Kondisi (<strong>F4</strong>) adalah "Baru". Tuliskan fungsi <strong>AND</strong>-nya secara lengkap.</p>' +
-                '<div class="input-group input-group-sm mb-1">' +
-                  '<span class="input-group-text bg-excel">f(x)</span>' +
-                  '<input type="text" id="input_q_case4" class="form-control" placeholder="Contoh: =AND(...)">' +
-                  '<button class="btn btn-outline-primary fw-bold" onclick="window.checkQuiz(\'q_case4\')">Cek Jawaban</button>' +
-                '</div>' +
-                '<div class="d-flex gap-3 mt-1 mb-2">' +
-                  '<button class="btn btn-sm btn-link text-muted text-decoration-none p-0" onclick="window.showHint(\'q_case4\')"><i class="fa-solid fa-circle-question text-warning"></i> Petunjuk</button>' +
-                  '<button class="btn btn-sm btn-link text-muted text-decoration-none p-0" onclick="window.showAnswer(\'q_case4\')"><i class="fa-solid fa-key text-success"></i> Lihat Jawaban</button>' +
-                '</div>' +
-                '<div id="extra_q_case4" class="mt-2 d-none"></div>' +
-                '<div id="fb_q_case4"></div>' +
-              '</div>' +
-            '</div>' +
-            
-            '<div class="card border-start border-4 border-primary shadow-sm">' +
-              '<div class="card-body">' +
-                '<h6 class="fw-bold text-primary"><i class="fa-solid fa-pen-to-square me-1"></i> Soal 5: Hitung Diskon (Kolom L)</h6>' +
-                '<p class="small mb-2">Diskon diberikan sebesar <strong>10%</strong> dikali Harga Barang (ada di sel <strong>K4</strong>). Tulis rumus matematikanya.</p>' +
-                '<div class="input-group input-group-sm mb-1">' +
-                  '<span class="input-group-text bg-excel">f(x)</span>' +
-                  '<input type="text" id="input_q_case5" class="form-control" placeholder="Contoh: =10%*...">' +
-                  '<button class="btn btn-outline-primary fw-bold" onclick="window.checkQuiz(\'q_case5\')">Cek Jawaban</button>' +
-                '</div>' +
-                '<div class="d-flex gap-3 mt-1 mb-2">' +
-                  '<button class="btn btn-sm btn-link text-muted text-decoration-none p-0" onclick="window.showHint(\'q_case5\')"><i class="fa-solid fa-circle-question text-warning"></i> Petunjuk</button>' +
-                  '<button class="btn btn-sm btn-link text-muted text-decoration-none p-0" onclick="window.showAnswer(\'q_case5\')"><i class="fa-solid fa-key text-success"></i> Lihat Jawaban</button>' +
-                '</div>' +
-                '<div id="extra_q_case5" class="mt-2 d-none"></div>' +
-                '<div id="fb_q_case5"></div>' +
-              '</div>' +
-            '</div>' +
+            '<div class="card mb-3 border-start border-4 border-primary shadow-sm">' +
+              '<div class="card-body">' +
+                '<h6 class="fw-bold text-primary"><i class="fa-solid fa-pen-to-square me-1"></i> Soal 4: Syarat Asuransi (Kolom I)</h6>' +
+                '<p class="small mb-2">Barang wajib diasuransikan JIKA: Kategori (<strong>E4</strong>) adalah "Elektronik" <strong>DAN</strong> Kondisi (<strong>F4</strong>) adalah "Baru". Tuliskan fungsi <strong>AND</strong>-nya secara lengkap.</p>' +
+                '<div class="input-group input-group-sm mb-1">' +
+                  '<span class="input-group-text bg-excel">f(x)</span>' +
+                  '<input type="text" id="input_q_case4" class="form-control" placeholder="Contoh: =AND(...)">' +
+                  '<button class="btn btn-outline-primary fw-bold" onclick="window.checkQuiz(\'q_case4\')">Cek Jawaban</button>' +
+                '</div>' +
+                '<div class="d-flex gap-3 mt-1 mb-2">' +
+                  '<button class="btn btn-sm btn-link text-muted text-decoration-none p-0" onclick="window.showHint(\'q_case4\')"><i class="fa-solid fa-circle-question text-warning"></i> Petunjuk</button>' +
+                '</div>' +
+                '<div id="extra_q_case4" class="mt-2 d-none"></div>' +
+                '<div id="fb_q_case4"></div>' +
+              '</div>' +
+            '</div>' +
+            
+            '<div class="card border-start border-4 border-primary shadow-sm">' +
+              '<div class="card-body">' +
+                '<h6 class="fw-bold text-primary"><i class="fa-solid fa-pen-to-square me-1"></i> Soal 5: Hitung Diskon (Kolom L)</h6>' +
+                '<p class="small mb-2">Diskon diberikan sebesar <strong>10%</strong> dikali Harga Barang (ada di sel <strong>K4</strong>). Tulis rumus matematikanya.</p>' +
+                '<div class="input-group input-group-sm mb-1">' +
+                  '<span class="input-group-text bg-excel">f(x)</span>' +
+                  '<input type="text" id="input_q_case5" class="form-control" placeholder="Contoh: =10%*...">' +
+                  '<button class="btn btn-outline-primary fw-bold" onclick="window.checkQuiz(\'q_case5\')">Cek Jawaban</button>' +
+                '</div>' +
+                '<div class="d-flex gap-3 mt-1 mb-2">' +
+                  '<button class="btn btn-sm btn-link text-muted text-decoration-none p-0" onclick="window.showHint(\'q_case5\')"><i class="fa-solid fa-circle-question text-warning"></i> Petunjuk</button>' +
+                '</div>' +
+                '<div id="extra_q_case5" class="mt-2 d-none"></div>' +
+                '<div id="fb_q_case5"></div>' +
+              '</div>' +
+            '</div>' +
 
-          '</div>' +
-        '</div>',
+          '</div>' +
+        '</div>',
 
-      'download': 
-        '<div class="card border-0 shadow-sm mb-4 rounded-4">' +
-          '<div class="card-body p-5 text-center">' +
-            '<i class="fa-solid fa-file-excel fa-4x text-success mb-3"></i>' +
-            '<h3 class="fw-bold text-success mb-2">Download Studi Kasus</h3>' +
-            '<p class="text-muted mb-4 fs-5">Silakan download file Excel studi kasus slip gaji di bawah ini untuk berlatih secara offline di komputer Anda.</p>' +
-            '<a href="https://docs.google.com/spreadsheets/d/16ADe37SEXz3aEUjTDbcmoS_QtprcC9uE/edit?usp=sharing&ouid=104890258326612595197&rtpof=true&sd=true" target="_blank" class="btn btn-success btn-lg px-4 rounded-pill fw-bold shadow-sm">' +
-              '<i class="fa-solid fa-download me-2"></i> Download File Latihan' +
-            '</a>' +
-          '</div>' +
-        '</div>',
+      'download': 
+        '<div class="card border-0 shadow-sm mb-4 rounded-4">' +
+          '<div class="card-body p-5 text-center">' +
+            '<i class="fa-solid fa-file-excel fa-4x text-success mb-3"></i>' +
+            '<h3 class="fw-bold text-success mb-2">Download Studi Kasus</h3>' +
+            '<p class="text-muted mb-4 fs-5">Silakan download file Excel studi kasus slip gaji di bawah ini untuk berlatih secara offline di komputer Anda.</p>' +
+            '<a href="https://docs.google.com/spreadsheets/d/16ADe37SEXz3aEUjTDbcmoS_QtprcC9uE/edit?usp=sharing&ouid=104890258326612595197&rtpof=true&sd=true" target="_blank" class="btn btn-success btn-lg px-4 rounded-pill fw-bold shadow-sm">' +
+              '<i class="fa-solid fa-download me-2"></i> Download File Latihan' +
+            '</a>' +
+          '</div>' +
+        '</div>',
 
-      'upload':
-        '<div class="card border-0 shadow-sm mb-4 rounded-4">' +
-          '<div class="card-body p-4">' +
-            '<h3 class="fw-bold text-primary mb-2"><i class="fa-solid fa-cloud-arrow-up me-2"></i> Upload Hasil Latihan</h3>' +
-            '<p class="text-muted mb-4">Setelah selesai mengerjakan latihan di komputer, upload file Excel Anda di sini agar dapat terekam di sistem.</p>' +
-            '<div id="uploadAlert"></div>' +
-            '<div class="mb-3">' +
-              '<label class="form-label fw-bold">Nama Lengkap</label>' +
-              '<input type="text" id="studentName" class="form-control" placeholder="Masukkan nama Anda...">' +
-            '</div>' +
-            '<div class="mb-4">' +
-              '<label class="form-label fw-bold">File Excel (.xlsx / .xls)</label>' +
-              '<input type="file" id="studentFile" class="form-control" accept=".xlsx, .xls, .csv">' +
-            '</div>' +
-            '<button id="btnUpload" class="btn btn-primary px-4 py-2 fw-bold shadow-sm" onclick="window.handleUpload()">' +
-              '<i class="fa-solid fa-paper-plane me-2"></i> Kirim File' +
-            '</button>' +
-          '</div>' +
-        '</div>'
-    };
+      'upload':
+        '<div class="card border-0 shadow-sm mb-4 rounded-4">' +
+          '<div class="card-body p-4">' +
+            '<h3 class="fw-bold text-primary mb-2"><i class="fa-solid fa-cloud-arrow-up me-2"></i> Upload Hasil Latihan</h3>' +
+            '<p class="text-muted mb-4">Setelah selesai mengerjakan latihan di komputer, upload file Excel Anda di sini agar dapat terekam di sistem.</p>' +
+            '<div id="uploadAlert"></div>' +
+            '<div class="mb-3">' +
+              '<label class="form-label fw-bold">Nama Lengkap</label>' +
+              '<input type="text" id="studentName" class="form-control" placeholder="Masukkan nama Anda...">' +
+            '</div>' +
+            '<div class="mb-4">' +
+              '<label class="form-label fw-bold">File Excel (.xlsx / .xls)</label>' +
+              '<input type="file" id="studentFile" class="form-control" accept=".xlsx, .xls, .csv">' +
+            '</div>' +
+            '<button id="btnUpload" class="btn btn-primary px-4 py-2 fw-bold shadow-sm" onclick="window.handleUpload()">' +
+              '<i class="fa-solid fa-paper-plane me-2"></i> Kirim File' +
+            '</button>' +
+          '</div>' +
+        '</div>'
+    };
 
 
     // === FUNGSI MANDATORY & HELPER ===
@@ -703,15 +692,7 @@
       extraEl.classList.remove('d-none');
     };
 
-    // Fungsi untuk menampilkan Jawaban
-    window.showAnswer = function(quizId) {
-      var extraEl = document.getElementById('extra_' + quizId);
-      if(!extraEl) return;
-      var ansText = quizExtras[quizId].answer;
-      extraEl.innerHTML = '<div class="alert alert-success py-2 px-3 mb-2 small border-0 shadow-sm"><i class="fa-solid fa-key text-success me-1"></i> <strong>Jawaban Benar:</strong> <code>' + escapeHTML(ansText) + '</code></div>';
-      extraEl.classList.remove('d-none');
-    };
-
+   // (Fungsi showAnswer telah dihapus agar siswa tidak bisa curang)
     // Fungsi Upload File ke Server
     window.handleUpload = function() {
       var nameInput = document.getElementById('studentName');
