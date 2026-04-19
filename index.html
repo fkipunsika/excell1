@@ -710,25 +710,7 @@
           base64: base64
         };
         
-        if (typeof google === 'undefined') {
-          // Mode Simulasi/Preview
-          setTimeout(function() {
-             btn.innerHTML = '<i class="fa-solid fa-check me-2"></i> Berhasil Diupload';
-             btn.classList.replace('btn-primary', 'btn-success');
-             alertBox.innerHTML = '<div class="alert alert-success small border-0 py-2"><i class="fa-solid fa-check-circle me-1"></i> (Simulasi) File atas nama <strong>' + escapeHTML(name) + '</strong> berhasil dikirim!</div>';
-             
-             setTimeout(function() {
-               btn.innerHTML = originalBtnText;
-               btn.disabled = false;
-               btn.classList.replace('btn-success', 'btn-primary');
-               nameInput.value = '';
-               fileInput.value = '';
-             }, 3000);
-          }, 1500);
-          return;
-        }
-        
-        // Eksekusi gasRun ke server (Google Apps Script)
+      // Eksekusi gasRun ke server (Google Apps Script)
         gasRun('uploadFile', sessionToken, payload)
           .then(function(res) {
              if(handleSessionExpired(res)) return;
