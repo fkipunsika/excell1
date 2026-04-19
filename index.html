@@ -461,8 +461,17 @@
             '<div class="p-3 bg-light rounded-3 mb-4">' +
               '<h5 class="fw-bold text-dark"><span class="badge bg-info me-2">1</span> Kombinasi CHOOSE dan VALUE</h5>' +
               '<p>Fungsi CHOOSE bekerja dengan memilih satu dari beberapa opsi berdasarkan angka indeks. Jika indeks diekstrak menggunakan fungsi teks (seperti RIGHT), hasilnya adalah teks "angka", bukan numerik. <strong>VALUE</strong> mengubah teks angka tersebut menjadi nilai numerik yang bisa dibaca CHOOSE.</p>' +
-              '<div class="formula-box mb-2">=CHOOSE(VALUE(RIGHT(teks, 1)), "Opsi1", "Opsi2", "Opsi3")</div>' +
-              '<p class="small text-muted mb-3"><i class="fa-solid fa-lightbulb text-warning"></i> Contoh: Kode "P-2026-3". Ekstrak angka "3", ubah jadi nilai numerik, lalu pilih opsi ke-3 (Karyawan).</p>' +
+             '<div class="formula-box mb-2">=CHOOSE(VALUE(RIGHT(teks, 1)), "Opsi1", "Opsi2", "Opsi3")</div>' +
+              '<p class="small text-muted mb-2"><i class="fa-solid fa-lightbulb text-warning"></i> Contoh: Kode "P-2026-3". Ekstrak angka "3", ubah jadi nilai numerik, lalu pilih opsi ke-3 (Karyawan).</p>' +
+              '<div class="table-responsive mb-4 rounded-3 border">' +
+                '<table class="table table-sm excel-table mb-0">' +
+                  '<thead><tr><th style="width:40px; background:#e8f5e9; color:#333;"></th><th>A (Kode Peserta)</th><th>B (Hasil Rumus)</th></tr></thead>' +
+                  '<tbody>' +
+                    '<tr><td style="background:#e8f5e9; color:#333; text-align:center; font-weight:bold;">2</td><td>P-2026-3</td><td class="text-success fw-bold">Karyawan</td></tr>' +
+                    '<tr><td style="background:#e8f5e9; color:#333; text-align:center; font-weight:bold;">3</td><td>P-2026-1</td><td class="text-success fw-bold">Reguler</td></tr>' +
+                  '</tbody>' +
+                '</table>' +
+              '</div>' +
               '<div class="card border-start border-4 border-info shadow-sm">' +
                 '<div class="card-body p-3">' +
                   '<label class="fw-bold small text-uppercase text-muted mb-2">Uji Pemahaman CHOOSE & VALUE:</label>' +
@@ -485,7 +494,16 @@
               '<h5 class="fw-bold text-dark"><span class="badge bg-info me-2">2</span> Kombinasi CHOOSE dan SEARCH</h5>' +
               '<p>Bagaimana jika kode berupa huruf abjad? Karena CHOOSE butuh angka, gunakan <strong>SEARCH</strong> untuk mencari urutan posisi huruf tersebut di dalam kumpulan teks pembanding (misal "ABCD").</p>' +
               '<div class="formula-box mb-2">=CHOOSE(SEARCH(MID(teks, 5, 1), "ABCD"), "Dasar", "Menengah", "Lanjut", "Mahir")</div>' +
-              '<p class="small text-muted mb-3"><i class="fa-solid fa-lightbulb text-warning"></i> Contoh: Kode "MAT-C-101". Ekstrak huruf "C", cari urutannya di "ABCD" (berada di urutan ke-3), maka CHOOSE akan mengambil opsi ke-3 ("Lanjut").</p>' +
+              '<p class="small text-muted mb-2"><i class="fa-solid fa-lightbulb text-warning"></i> Contoh: Kode "MAT-C-101". Ekstrak huruf "C", cari urutannya di "ABCD" (berada di urutan ke-3), maka CHOOSE akan mengambil opsi ke-3 ("Lanjut").</p>' +
+              '<div class="table-responsive mb-4 rounded-3 border">' +
+                '<table class="table table-sm excel-table mb-0">' +
+                  '<thead><tr><th style="width:40px; background:#e8f5e9; color:#333;"></th><th>A (Kode Modul)</th><th>B (Hasil Rumus)</th></tr></thead>' +
+                  '<tbody>' +
+                    '<tr><td style="background:#e8f5e9; color:#333; text-align:center; font-weight:bold;">2</td><td>MAT-C-101</td><td class="text-success fw-bold">Lanjut</td></tr>' +
+                    '<tr><td style="background:#e8f5e9; color:#333; text-align:center; font-weight:bold;">3</td><td>MAT-A-101</td><td class="text-success fw-bold">Dasar</td></tr>' +
+                  '</tbody>' +
+                '</table>' +
+              '</div>' +
               '<div class="card border-start border-4 border-info shadow-sm">' +
                 '<div class="card-body p-3">' +
                   '<label class="fw-bold small text-uppercase text-muted mb-2">Uji Pemahaman CHOOSE & SEARCH:</label>' +
@@ -508,6 +526,15 @@
               '<h5 class="fw-bold text-dark"><span class="badge bg-info me-2">3</span> Fungsi SWITCH (Alternatif Praktis)</h5>' +
               '<p>Fungsi <strong>SWITCH</strong> mengevaluasi satu nilai ekspresi dan membandingkannya langsung dengan daftar nilai secara berpasangan. Ini menyederhanakan IF bertingkat dan lebih mudah dibaca untuk memproses huruf tanpa perlu SEARCH.</p>' +
               '<div class="formula-box mb-2">=SWITCH(ekstrak_teks, "A", "Dasar", "B", "Menengah", "C", "Lanjut", "D", "Mahir")</div>' +
+              '<div class="table-responsive mb-3 mt-3 rounded-3 border">' +
+                '<table class="table table-sm excel-table mb-0">' +
+                  '<thead><tr><th style="width:40px; background:#e8f5e9; color:#333;"></th><th>A (Teks yang Diekstrak)</th><th>B (Hasil SWITCH)</th></tr></thead>' +
+                  '<tbody>' +
+                    '<tr><td style="background:#e8f5e9; color:#333; text-align:center; font-weight:bold;">2</td><td>B</td><td class="text-success fw-bold">Menengah</td></tr>' +
+                    '<tr><td style="background:#e8f5e9; color:#333; text-align:center; font-weight:bold;">3</td><td>D</td><td class="text-success fw-bold">Mahir</td></tr>' +
+                  '</tbody>' +
+                '</table>' +
+              '</div>' +
               '<p class="small text-muted mb-0"><i class="fa-solid fa-lightbulb text-warning"></i> Tips: Gunakan CHOOSE+VALUE untuk indeks berupa angka murni, dan gunakan SWITCH untuk mencocokkan huruf atau kata spesifik.</p>' +
             '</div>' +
             
