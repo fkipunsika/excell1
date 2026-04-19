@@ -563,11 +563,16 @@
           '<div class="card-body p-5 text-center">' +
             '<i class="fa-solid fa-file-excel fa-4x text-success mb-3"></i>' +
             '<h3 class="fw-bold text-success mb-2">Download Studi Kasus</h3>' +
-            '<p class="text-muted mb-4 fs-5">Silakan download file Excel studi kasus slip gaji di bawah ini untuk berlatih secara offline di komputer Anda.</p>' +
-            '<a href="https://docs.google.com/spreadsheets/d/16ADe37SEXz3aEUjTDbcmoS_QtprcC9uE/edit?usp=sharing&ouid=104890258326612595197&rtpof=true&sd=true" target="_blank" class="btn btn-success btn-lg px-4 rounded-pill fw-bold shadow-sm">' +
-              '<i class="fa-solid fa-download me-2"></i> Download File Latihan' +
-            '</a>' +
-          '</div>' +
+           '<p class="text-muted mb-4 fs-5">Silakan download file Excel studi kasus di bawah ini untuk berlatih secara offline di komputer Anda.</p>' +
+              '<div class="d-grid gap-3 d-sm-flex justify-content-sm-center">' +
+                '<a href="https://docs.google.com/spreadsheets/d/16ADe37SEXz3aEUjTDbcmoS_QtprcC9uE/edit?usp=sharing&ouid=104890258326612595197&rtpof=true&sd=true" target="_blank" class="btn btn-success btn-lg px-4 rounded-pill fw-bold shadow-sm">' +
+                  '<i class="fa-solid fa-download me-2"></i> Latihan 1 (Slip Gaji)' +
+                '</a>' +
+                '<a href="https://docs.google.com/spreadsheets/d/17M0dfkd4AVScMkJa8BdqXyi1RTaOyOSm/edit?usp=sharing&ouid=104890258326612595197&rtpof=true&sd=true" target="_blank" class="btn btn-info text-white btn-lg px-4 rounded-pill fw-bold shadow-sm">' +
+                  '<i class="fa-solid fa-download me-2"></i> Latihan 2 (Logika Lanjut)' +
+                '</a>' +
+              '</div>' +
+            '</div>' +
         '</div>',
 
       'upload':
@@ -578,13 +583,20 @@
             '<div id="uploadAlert"></div>' +
             '<div class="mb-3">' +
               '<label class="form-label fw-bold">Nama Lengkap</label>' +
-              '<input type="text" id="studentName" class="form-control" placeholder="Masukkan nama Anda...">' +
-            '</div>' +
-            '<div class="mb-4">' +
-              '<label class="form-label fw-bold">File Excel (.xlsx / .xls)</label>' +
-              '<input type="file" id="studentFile" class="form-control" accept=".xlsx, .xls, .csv">' +
-            '</div>' +
-            '<button id="btnUpload" class="btn btn-primary px-4 py-2 fw-bold shadow-sm" onclick="window.handleUpload()">' +
+                '<input type="text" id="studentName" class="form-control" placeholder="Masukkan nama Anda...">' +
+              '</div>' +
+              '<div class="mb-3">' +
+                '<label class="form-label fw-bold">Pilih Tugas</label>' +
+                '<select id="taskType" class="form-select">' +
+                  '<option value="latihan1">Latihan 1 (Fungsi Dasar & IF)</option>' +
+                  '<option value="latihan2">Latihan 2 (Fungsi Lanjut - CHOOSE/SWITCH)</option>' +
+                '</select>' +
+              '</div>' +
+              '<div class="mb-4">' +
+                '<label class="form-label fw-bold">File Excel (.xlsx / .xls)</label>' +
+                '<input type="file" id="studentFile" class="form-control" accept=".xlsx, .xls, .csv">' +
+              '</div>' +
+              '<button id="btnUpload" class="btn btn-primary px-4 py-2 fw-bold shadow-sm" onclick="window.handleUpload()">' +
               '<i class="fa-solid fa-paper-plane me-2"></i> Kirim File' +
             '</button>' +
           '</div>' +
@@ -614,7 +626,7 @@
     }
 
     // Promise wrapper untuk memanggil server GAS dari luar (GitHub Pages)
-    const WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbx36J-ODB0sr7kyTAzf9VTX3jP8wZx31OGabZMP7I9ATycs3_OgHBZPw6IIoYQmdV5Ujw/exec'; // WAJIB DIISI DENGAN URL GAS!
+    const WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbxMVhdOb0HV7hIaqHm_eKBiFZba0WBqxLzk_89uJFl4TBpoYNa4lVsy25xhTS86yH-Kiw/exec'; // WAJIB DIISI DENGAN URL GAS!
 
     function gasRun(funcName) {
       var args = Array.prototype.slice.call(arguments, 1);
@@ -788,7 +800,8 @@
    // (Fungsi showAnswer telah dihapus agar siswa tidak bisa curang)
     // Fungsi Upload File ke Server
     window.handleUpload = function() {
-      var nameInput = document.getElementById('studentName');
+    var nameInput = document.getElementById('studentName');
+      var taskInput = document.getElementById('taskType');
       var fileInput = document.getElementById('studentFile');
       var btn = document.getElementById('btnUpload');
       var alertBox = document.getElementById('uploadAlert');
@@ -816,8 +829,9 @@
         var dataUrl = e.target.result;
         var base64 = dataUrl.split(',')[1];
         
-        var payload = {
+     var payload = {
           studentName: name,
+          taskType: taskInput.value,
           filename: file.name,
           mimeType: file.type || 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
           base64: base64
