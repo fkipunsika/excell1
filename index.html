@@ -81,10 +81,13 @@
         <a id="nav-logic" class="nav-item-custom" onclick="window.showPage('logic', this)">
           <i class="fa-solid fa-code-branch fa-fw me-3 opacity-75"></i> Fungsi Logika (IF)
         </a>
-        <a id="nav-advanced" class="nav-item-custom" onclick="window.showPage('advanced', this)">
-          <i class="fa-solid fa-layer-group fa-fw me-3 opacity-75"></i> Fungsi Lanjut (CHOOSE)
-        </a>
-        <div class="px-4 mt-3 mb-1 text-muted small fw-bold text-uppercase tracking-wider">Latihan Praktik</div>
+       <a id="nav-advanced" class="nav-item-custom" onclick="window.showPage('advanced', this)">
+          <i class="fa-solid fa-layer-group fa-fw me-3 opacity-75"></i> Fungsi Lanjut (CHOOSE)
+        </a>
+        <a id="nav-vlookup" class="nav-item-custom" onclick="window.showPage('vlookup', this)">
+          <i class="fa-solid fa-table-list fa-fw me-3 opacity-75"></i> Fungsi VLOOKUP
+        </a>
+        <div class="px-4 mt-3 mb-1 text-muted small fw-bold text-uppercase tracking-wider">Latihan Praktik</div>
         <a id="nav-case" class="nav-item-custom" onclick="window.showPage('case', this)">
           <i class="fa-solid fa-keyboard fa-fw me-3 text-warning"></i> Latihan Kasus
         </a>
@@ -555,10 +558,52 @@
                 '</div>' +
               '</div>' +
             '</div>' +            
-          '</div>' +
-        '</div>',
+'</div>' +
+        '</div>',
 
-      'download': 
+      'vlookup': 
+        '<div class="card border-0 shadow-sm mb-4 rounded-4">' +
+          '<div class="card-body p-4">' +
+            '<h3 class="fw-bold text-success mb-2"><i class="fa-solid fa-table-list me-2"></i> Fungsi Pencarian (VLOOKUP)</h3>' +
+            '<p class="text-muted mb-4">Memahami fungsi VLOOKUP dasar dan kombinasinya dengan fungsi IF sangat penting untuk mengolah data bertingkat seperti pada kasus harga grosir.</p>' +
+            
+            '<div class="p-3 bg-light rounded-3 mb-4">' +
+              '<h5 class="fw-bold text-dark"><span class="badge bg-success me-2">1</span> Dasar VLOOKUP</h5>' +
+              '<p>Fungsi VLOOKUP (Vertical Lookup) digunakan untuk mencari sebuah nilai di kolom paling kiri dari sebuah tabel referensi, lalu mengembalikan nilai pada baris yang sama dari kolom yang ditentukan.</p>' +
+              '<div class="formula-box mb-2">=VLOOKUP(lookup_value, table_array, col_index_num, [range_lookup])</div>' +
+              '<ul class="small text-muted mb-3">' +
+                '<li><strong>lookup_value:</strong> Nilai acuan yang ingin dicari (Contoh: ID Barang).</li>' +
+                '<li><strong>table_array:</strong> Rentang tabel referensi tempat data berada (jangan lupa kunci dengan $ agar tidak bergeser).</li>' +
+                '<li><strong>col_index_num:</strong> Nomor urut kolom pada tabel referensi.</li>' +
+                '<li><strong>range_lookup:</strong> Gunakan FALSE (atau 0) untuk pencocokan persis.</li>' +
+              '</ul>' +
+              '<div class="card border-start border-4 border-success shadow-sm">' +
+                '<div class="card-body p-3">' +
+                  '<h6 class="fw-bold text-success mb-2">Contoh Soal 1: VLOOKUP Dasar</h6>' +
+                  '<p class="small mb-2">Tabel Referensi A1:B4 (A2: B01 | B2: Buku). Di tabel transaksi (D2), kamu memasukkan ID P01. Rumusnya:</p>' +
+                  '<div class="bg-dark text-success p-2 rounded text-center fw-bold font-monospace">=VLOOKUP(D2, $A$1:$B$4, 2, FALSE)</div>' +
+                '</div>' +
+              '</div>' +
+            '</div>' +
+
+            '<div class="p-3 bg-light rounded-3 mb-4">' +
+              '<h5 class="fw-bold text-dark"><span class="badge bg-success me-2">2</span> Kombinasi IF dan VLOOKUP</h5>' +
+              '<p>Alih-alih mengetik angka pasti pada kolom urut (col_index_num), kita menggantinya dengan rumus IF berdasarkan jumlah pembelian (QTY).</p>' +
+              '<div class="formula-box mb-2">=VLOOKUP(Acuan, Tabel, IF(Kondisi_1, Kolom_A, IF(Kondisi_2, Kolom_B, Kolom_C)), FALSE)</div>' +
+              '<div class="card border-start border-4 border-success shadow-sm">' +
+                '<div class="card-body p-3">' +
+                  '<h6 class="fw-bold text-success mb-2">Contoh Soal 2 & 3: IF Bersarang dalam VLOOKUP</h6>' +
+                  '<p class="small mb-2">Tabel Harga A1:E3 (Kolom 3: Harga Normal, Kolom 4: Grosir >=50, Kolom 5: Super Grosir >=100). G2 = ID Barang, H2 = QTY (65). Rumusnya:</p>' +
+                  '<div class="bg-dark text-success p-2 rounded text-center fw-bold font-monospace mb-2">=VLOOKUP(G2, $A$1:$E$3, IF(H2>=100, 5, IF(H2>=50, 4, 3)), FALSE)</div>' +
+                  '<p class="small text-muted mb-0"><i class="fa-solid fa-lightbulb text-warning"></i> <strong>Tips:</strong> Saat menggunakan IF bersarang, pastikan kondisi diurutkan dari nilai paling besar (>100) ke yang lebih kecil (>50).</p>' +
+                '</div>' +
+              '</div>' +
+            '</div>' +
+
+          '</div>' +
+        '</div>',
+
+      'download':
         '<div class="card border-0 shadow-sm mb-4 rounded-4">' +
           '<div class="card-body p-5 text-center">' +
             '<i class="fa-solid fa-file-excel fa-4x text-success mb-3"></i>' +
@@ -568,10 +613,13 @@
                 '<a href="https://docs.google.com/spreadsheets/d/16ADe37SEXz3aEUjTDbcmoS_QtprcC9uE/edit?usp=sharing&ouid=104890258326612595197&rtpof=true&sd=true" target="_blank" class="btn btn-success btn-lg px-4 rounded-pill fw-bold shadow-sm">' +
                   '<i class="fa-solid fa-download me-2"></i> Latihan 1 (Slip Gaji)' +
                 '</a>' +
-                '<a href="https://docs.google.com/spreadsheets/d/17M0dfkd4AVScMkJa8BdqXyi1RTaOyOSm/edit?usp=sharing&ouid=104890258326612595197&rtpof=true&sd=true" target="_blank" class="btn btn-info text-white btn-lg px-4 rounded-pill fw-bold shadow-sm">' +
-                  '<i class="fa-solid fa-download me-2"></i> Latihan 2 (Logika Lanjut)' +
-                '</a>' +
-              '</div>' +
+               '<a href="https://docs.google.com/spreadsheets/d/17M0dfkd4AVScMkJa8BdqXyi1RTaOyOSm/edit?usp=sharing&ouid=104890258326612595197&rtpof=true&sd=true" target="_blank" class="btn btn-info text-white btn-lg px-4 rounded-pill fw-bold shadow-sm">' +
+                  '<i class="fa-solid fa-download me-2"></i> Latihan 2 (Logika Lanjut)' +
+                '</a>' +
+                '<a href="https://docs.google.com/spreadsheets/d/1bWvVVq1OVjsd2Ahy1ONcmcIYGP9Grqe-/edit?usp=sharing&ouid=104890258326612595197&rtpof=true&sd=true" target="_blank" class="btn btn-warning text-dark btn-lg px-4 rounded-pill fw-bold shadow-sm">' +
+                  '<i class="fa-solid fa-download me-2"></i> Latihan 3 (VLOOKUP)' +
+                '</a>' +
+              '</div>' +
             '</div>' +
         '</div>',
 
@@ -589,8 +637,9 @@
                 '<label class="form-label fw-bold">Pilih Tugas</label>' +
                 '<select id="taskType" class="form-select">' +
                   '<option value="latihan1">Latihan 1 (Fungsi Dasar & IF)</option>' +
-                  '<option value="latihan2">Latihan 2 (Fungsi Lanjut - CHOOSE/SWITCH)</option>' +
-                '</select>' +
+                  '<option value="latihan2">Latihan 2 (Fungsi Lanjut - CHOOSE/SWITCH)</option>' +
+                  '<option value="latihan3">Latihan 3 (VLOOKUP & IF)</option>' +
+                '</select>' +
               '</div>' +
               '<div class="mb-4">' +
                 '<label class="form-label fw-bold">File Excel (.xlsx / .xls)</label>' +
@@ -626,7 +675,7 @@
     }
 
     // Promise wrapper untuk memanggil server GAS dari luar (GitHub Pages)
-    const WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbxMVhdOb0HV7hIaqHm_eKBiFZba0WBqxLzk_89uJFl4TBpoYNa4lVsy25xhTS86yH-Kiw/exec'; // WAJIB DIISI DENGAN URL GAS!
+    const WEBAPP_URL = 'https://script.google.com/macros/s/AKfycby3LHExTllMRHbGh-swBA1UAaayema8gPgDPVS7d1d46vWkDzOLCMQTOZ9pWGJKKTavHg/exec'; // WAJIB DIISI DENGAN URL GAS!
 
     function gasRun(funcName) {
       var args = Array.prototype.slice.call(arguments, 1);
