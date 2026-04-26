@@ -586,20 +586,50 @@
               '</div>' +
             '</div>' +
 
-            '<div class="p-3 bg-light rounded-3 mb-4">' +
+          '<div class="p-3 bg-light rounded-3 mb-4">' +
               '<h5 class="fw-bold text-dark"><span class="badge bg-success me-2">2</span> Kombinasi IF dan VLOOKUP</h5>' +
-              '<p>Alih-alih mengetik angka pasti pada kolom urut (col_index_num), kita menggantinya dengan rumus IF berdasarkan jumlah pembelian (QTY).</p>' +
-              '<div class="formula-box mb-2">=VLOOKUP(Acuan, Tabel, IF(Kondisi_1, Kolom_A, IF(Kondisi_2, Kolom_B, Kolom_C)), FALSE)</div>' +
-              '<div class="card border-start border-4 border-success shadow-sm">' +
-                '<div class="card-body p-3">' +
-                  '<h6 class="fw-bold text-success mb-2">Contoh Soal 2 & 3: IF Bersarang dalam VLOOKUP</h6>' +
-                  '<p class="small mb-2">Tabel Harga A1:E3 (Kolom 3: Harga Normal, Kolom 4: Grosir >=50, Kolom 5: Super Grosir >=100). G2 = ID Barang, H2 = QTY (65). Rumusnya:</p>' +
-                  '<div class="bg-dark text-success p-2 rounded text-center fw-bold font-monospace mb-2">=VLOOKUP(G2, $A$1:$E$3, IF(H2>=100, 5, IF(H2>=50, 4, 3)), FALSE)</div>' +
-                  '<p class="small text-muted mb-0"><i class="fa-solid fa-lightbulb text-warning"></i> <strong>Tips:</strong> Saat menggunakan IF bersarang, pastikan kondisi diurutkan dari nilai paling besar (>100) ke yang lebih kecil (>50).</p>' +
-                '</div>' +
+              '<p class="mb-3">Contoh ini sangat berguna untuk skenario di mana harga barang berubah secara otomatis berdasarkan jumlah (QTY) yang dibeli (sistem grosir).</p>' +
+              '<h6 class="fw-bold text-success mt-3"><i class="fa-solid fa-table me-1"></i> 1. Persiapan Tabel</h6>' +
+              '<p class="small mb-1 mt-2 text-muted"><strong>Tabel A: Tabel Referensi Harga (Rentang: A1:D6)</strong></p>' +
+              '<div class="table-responsive mb-3 rounded-3 border">' +
+                '<table class="table table-sm excel-table mb-0 text-nowrap">' +
+                  '<thead><tr><th style="width:40px; background:#e8f5e9; color:#333;"></th><th>A</th><th>B</th><th>C</th><th>D</th></tr></thead>' +
+                  '<tbody>' +
+                    '<tr><td style="background:#e8f5e9; color:#333; text-align:center; font-weight:bold;">1</td><td class="fw-bold">No</td><td class="fw-bold">Produk</td><td class="fw-bold">Harga Retail</td><td class="fw-bold">Harga Grosir</td></tr>' +
+                    '<tr><td style="background:#e8f5e9; color:#333; text-align:center; font-weight:bold;">2</td><td></td><td>Syarat Minim QTY</td><td>1 unit</td><td>50 unit</td></tr>' +
+                    '<tr><td style="background:#e8f5e9; color:#333; text-align:center; font-weight:bold;">3</td><td class="text-end">1</td><td>Apel</td><td class="text-end">20,000</td><td class="text-end">17,000</td></tr>' +
+                    '<tr><td style="background:#e8f5e9; color:#333; text-align:center; font-weight:bold;">4</td><td class="text-end">2</td><td>Jeruk</td><td class="text-end">15,000</td><td class="text-end">12,000</td></tr>' +
+                    '<tr><td style="background:#e8f5e9; color:#333; text-align:center; font-weight:bold;">5</td><td class="text-end">3</td><td>Mangga</td><td class="text-end">25,000</td><td class="text-end">20,000</td></tr>' +
+                    '<tr><td style="background:#e8f5e9; color:#333; text-align:center; font-weight:bold;">6</td><td></td><td></td><td></td><td></td></tr>' +
+                  '</tbody>' +
+                '</table>' +
+              '</div>' +
+              '<p class="small mb-1 text-muted"><strong>Tabel B: Tabel Transaksi (Input Data)</strong></p>' +
+              '<div class="table-responsive mb-4 rounded-3 border">' +
+                '<table class="table table-sm excel-table mb-0 text-nowrap">' +
+                  '<thead><tr><th style="width:40px; background:#e8f5e9; color:#333;"></th><th>F</th><th>G</th><th>H</th></tr></thead>' +
+                  '<tbody>' +
+                    '<tr><td style="background:#e8f5e9; color:#333; text-align:center; font-weight:bold;">2</td><td class="fw-bold">Produk</td><td class="fw-bold">QTY</td><td class="fw-bold">Harga Satuan</td></tr>' +
+                    '<tr><td style="background:#e8f5e9; color:#333; text-align:center; font-weight:bold;">3</td><td>Apel</td><td>65</td><td class="text-muted fst-italic">...RUMUS DI SINI...</td></tr>' +
+                  '</tbody>' +
+                '</table>' +
+              '</div>' +
+              '<h6 class="fw-bold text-success mt-3"><i class="fa-solid fa-bolt me-1"></i> 2. Rumus IF VLOOKUP</h6>' +
+              '<p class="small mb-2">Kita ingin Excel berpikir: <em>"Cari Apel di Tabel Referensi. Jika pembeli beli >= 50, ambil harga di kolom ke-3 (Grosir). Jika tidak, ambil harga di kolom ke-2 (Retail)."</em></p>' +
+              '<div class="bg-dark text-success p-2 rounded text-center fw-bold font-monospace mb-4 fs-6">=VLOOKUP(F3, $B$3:$D$6, IF(G3>=50, 3, 2), FALSE)</div>' +
+              '<h6 class="fw-bold text-success mt-3"><i class="fa-solid fa-magnifying-glass me-1"></i> 3. Penjelasan Bedah Rumus</h6>' +
+              '<ul class="small text-muted mb-3">' +
+                '<li class="mb-1"><code>VLOOKUP(F3, ...)</code>: Excel melihat "Apel" sebagai kunci pencarian.</li>' +
+                '<li class="mb-1"><code>$B$3:$D$6</code>: Ini adalah area tabel referensi (dimulai dari kolom Produk sampai Harga Grosir). Harus dikunci dengan $.</li>' +
+                '<li class="mb-1"><code>IF(G3>=50, 3, 2)</code>: Pengganti angka urutan kolom. Jika QTY di G3 (65) >= 50, hasilnya adalah 3. VLOOKUP akan mengambil kolom ke-3 dari area yang diblok (Harga Grosir). Jika tidak, mengambil kolom ke-2 (Harga Retail).</li>' +
+                '<li><code>FALSE</code>: Mencari nama produk yang benar-benar sama persis.</li>' +
+              '</ul>' +
+              '<div class="alert alert-warning border-0 p-3 small mb-0 shadow-sm">' +
+                '<strong><i class="fa-solid fa-lightbulb me-1"></i> Tips: Jika Ada 3 Tingkatan Harga</strong><br>' +
+                'Jika kamu punya Harga Retail (min 1), Grosir (min 50), dan Super Grosir (min 100) di kolom E, rumusnya tinggal ditambah satu IF lagi:<br>' +
+                '<code class="text-dark fw-bold mt-2 d-block">=VLOOKUP(F3, $B$3:$E$6, IF(G3>=100, 4, IF(G3>=50, 3, 2)), FALSE)</code>' +
               '</div>' +
             '</div>' +
-
           '</div>' +
         '</div>',
 
